@@ -2,9 +2,9 @@ import "./AddTodo.scss";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-const AddTodo = () => {
+const AddTodo = ({ setTodoList, todoList }) => {
   const [inputValue, setInputValue] = useState("");
-  const [todoList, setTodoList] = useState([]);
+
   const handleChange = (event) => setInputValue(event.target.value);
 
   const addTodo = () => {
