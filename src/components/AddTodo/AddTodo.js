@@ -1,13 +1,22 @@
 import "./AddTodo.scss";
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 const AddTodo = () => {
   const [inputValue, setInputValue] = useState("");
+  const [todoList, setTodoList] = useState([]);
   const handleChange = (event) => setInputValue(event.target.value);
+
+  const addTodo = () => {
+    const newTodo = { id: uuid(), text: inputValue };
+    const updatedTodoList = [...todoList, newTodo];
+    setTodoList(updatedTodoList);
+    setInputValue("");
+  };
 
   return (
     <div className="addtodo">
-      <button> + </button>
+      <button onClick={addTodo}> + </button>
       <input
         value={inputValue}
         onChange={handleChange}
